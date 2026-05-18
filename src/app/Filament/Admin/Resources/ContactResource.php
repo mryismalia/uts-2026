@@ -2,9 +2,9 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\UserResource\Pages;
-use App\Filament\Admin\Resources\UserResource\RelationManagers;
-use App\Models\User;
+use App\Filament\Admin\Resources\ContactResource\Pages;
+use App\Filament\Admin\Resources\ContactResource\RelationManagers;
+use App\Models\Contact;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UserResource extends Resource
+class ContactResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = Contact::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,9 +23,6 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('avatar_url')
-                    ->maxLength(255)
-                    ->default(null),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -33,17 +30,14 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
+                Forms\Components\TextInput::make('subject')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('theme')
-                    ->maxLength(255)
-                    ->default('sunset'),
-                Forms\Components\TextInput::make('theme_color')
-                    ->maxLength(255)
-                    ->default(null),
+                Forms\Components\Textarea::make('message')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\Toggle::make('is_read')
+                    ->required(),
             ]);
     }
 
@@ -51,15 +45,14 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('avatar_url')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('subject')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('is_read')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -68,10 +61,6 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('theme')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('theme_color')
-                    ->searchable(),
             ])
             ->filters([
                 //
@@ -96,9 +85,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListContacts::route('/'),
+            'create' => Pages\CreateContact::route('/create'),
+            'edit' => Pages\EditContact::route('/{record}/edit'),
         ];
     }
 }
