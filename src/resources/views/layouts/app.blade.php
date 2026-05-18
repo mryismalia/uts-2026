@@ -6,19 +6,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Portfolio - Mery Ismalia')</title>
 
-    <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Livewire Styles -->
     @livewireStyles
 
     <style>
@@ -43,22 +38,23 @@
             transition: width 1s ease;
         }
 
+        /* 💗 PINK THEME */
         .hero-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
         }
 
         .card-gradient {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #fdf2f8 0%, #fbcfe8 100%);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
             transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.4);
         }
 
         .section-title {
@@ -74,12 +70,8 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
             border-radius: 2px;
-        }
-
-        .skill-item:hover .skill-percentage {
-            width: var(--percentage);
         }
 
         .navbar-fixed {
@@ -92,7 +84,7 @@
         }
 
         footer a:hover {
-            color: #667eea;
+            color: #ec4899;
             transform: translateX(5px);
         }
 
@@ -118,125 +110,116 @@
             font-weight: 600;
         }
 
-        .badge-completed { background: #10b981; color: white; }
-        .badge-development { background: #3b82f6; color: white; }
-        .badge-planning { background: #f59e0b; color: white; }
-        .badge-hold { background: #ef4444; color: white; }
+        .badge-completed { background: #ec4899; color: white; }
+        .badge-development { background: #db2777; color: white; }
+        .badge-planning { background: #f472b6; color: white; }
+        .badge-hold { background: #9d174d; color: white; }
+
+        /* override blue ke pink */
+        .text-blue-600 {
+            color: #ec4899 !important;
+        }
+
+        .hover\:text-blue-600:hover {
+            color: #ec4899 !important;
+        }
+
+        .border-blue-600 {
+            border-color: #ec4899 !important;
+        }
     </style>
 </head>
+
 <body class="bg-gray-50">
 
     <!-- Navbar -->
     <nav id="navbar" class="bg-white/95 backdrop-blur-md shadow-sm fixed w-full z-50 top-0 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <a href="{{ route('home') }}" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform">
+
+                <a href="{{ route('home') }}" class="text-2xl font-bold bg-gradient-to-r from-pink-500 to-pink-700 bg-clip-text text-transparent hover:scale-105 transition-transform">
                     Portofolio.
                 </a>
 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-blue-600 transition font-medium {{ request()->routeIs('home') ? 'text-blue-600 border-b-2 border-blue-600' : '' }}">Beranda</a>
-                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-blue-600 transition font-medium {{ request()->routeIs('about') ? 'text-blue-600 border-b-2 border-blue-600' : '' }}">Tentang</a>
-                    <a href="{{ route('projects') }}" class="text-gray-700 hover:text-blue-600 transition font-medium {{ request()->routeIs('projects') ? 'text-blue-600 border-b-2 border-blue-600' : '' }}">Proyek</a>
-                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-blue-600 transition font-medium {{ request()->routeIs('contact') ? 'text-blue-600 border-b-2 border-blue-600' : '' }}">Kontak</a>
+                    <a href="{{ route('home') }}" class="text-gray-700 hover:text-pink-500 transition font-medium {{ request()->routeIs('home') ? 'text-pink-500 border-b-2 border-pink-500' : '' }}">Beranda</a>
+                    <a href="{{ route('about') }}" class="text-gray-700 hover:text-pink-500 transition font-medium {{ request()->routeIs('about') ? 'text-pink-500 border-b-2 border-pink-500' : '' }}">Tentang</a>
+                    <a href="{{ route('projects') }}" class="text-gray-700 hover:text-pink-500 transition font-medium {{ request()->routeIs('projects') ? 'text-pink-500 border-b-2 border-pink-500' : '' }}">Proyek</a>
+                    <a href="{{ route('contact') }}" class="text-gray-700 hover:text-pink-500 transition font-medium {{ request()->routeIs('contact') ? 'text-pink-500 border-b-2 border-pink-500' : '' }}">Kontak</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg">
             <div class="px-4 py-2 space-y-2">
-                <a href="{{ route('home') }}" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Beranda</a>
-                <a href="{{ route('about') }}" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Tentang</a>
-                <a href="{{ route('projects') }}" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Proyek</a>
-                <a href="{{ route('contact') }}" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Kontak</a>
+                <a href="{{ route('home') }}" class="block px-3 py-2 text-gray-700 hover:bg-pink-50 rounded-lg">Beranda</a>
+                <a href="{{ route('about') }}" class="block px-3 py-2 text-gray-700 hover:bg-pink-50 rounded-lg">Tentang</a>
+                <a href="{{ route('projects') }}" class="block px-3 py-2 text-gray-700 hover:bg-pink-50 rounded-lg">Proyek</a>
+                <a href="{{ route('contact') }}" class="block px-3 py-2 text-gray-700 hover:bg-pink-50 rounded-lg">Kontak</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="mt-16">
         @yield('content')
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-900 text-white pt-12 pb-8 mt-20">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
-                <div data-aos="fade-up">
-                    <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Portofolio.</h3>
-                    <p class="text-gray-400 leading-relaxed">Full Stack Developer yang passionate dalam menciptakan solusi digital berkualitas dan inovatif.</p>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent">
+                        Portofolio.
+                    </h3>
+                    <p class="text-gray-400">Full Stack Developer.</p>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="font-semibold mb-4 text-lg">Tautan Cepat</h4>
-                    <ul class="space-y-2">
-                        <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-blue-400 transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Beranda</a></li>
-                        <li><a href="{{ route('about') }}" class="text-gray-400 hover:text-blue-400 transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Tentang</a></li>
-                        <li><a href="{{ route('projects') }}" class="text-gray-400 hover:text-blue-400 transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Proyek</a></li>
-                        <li><a href="{{ route('contact') }}" class="text-gray-400 hover:text-blue-400 transition flex items-center gap-2"><i class="fas fa-chevron-right text-xs"></i> Kontak</a></li>
+                <div>
+                    <h4 class="font-semibold mb-4">Tautan</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="{{ route('home') }}" class="hover:text-pink-400">Beranda</a></li>
+                        <li><a href="{{ route('about') }}" class="hover:text-pink-400">Tentang</a></li>
+                        <li><a href="{{ route('projects') }}" class="hover:text-pink-400">Proyek</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-pink-400">Kontak</a></li>
                     </ul>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="font-semibold mb-4 text-lg">Info Kontak</h4>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center gap-3"><i class="fas fa-envelope w-5 text-blue-400"></i> mery.ismalia@example.com</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-phone w-5 text-blue-400"></i> +62 812 3456 7890</li>
-                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt w-5 text-blue-400"></i> Jakarta, Indonesia</li>
+                <div>
+                    <h4 class="font-semibold mb-4">Kontak</h4>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>Email</li>
+                        <li>Phone</li>
+                        <li>Indonesia</li>
                     </ul>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="font-semibold mb-4 text-lg">Ikuti Saya</h4>
-                    <div class="flex space-x-3">
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all hover:scale-110"><i class="fab fa-github"></i></a>
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all hover:scale-110"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all hover:scale-110"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <div>
+                    <h4 class="font-semibold mb-4">Social</h4>
+                    <div class="flex gap-3">
+                        <a class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600"><i class="fab fa-github"></i></a>
+                        <a class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
+
             </div>
 
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Portofolio. All rights reserved. | Dibangun dengan Laravel, Filament & TailwindCSS</p>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                © 2024 Portfolio
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
+        AOS.init({ duration: 1000, once: true });
 
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
-            } else {
-                navbar.classList.remove('shadow-lg');
-            }
+        document.getElementById('menu-btn')?.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
     </script>
 

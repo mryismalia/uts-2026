@@ -38,4 +38,26 @@ class Profile extends Model
     {
         return $query->where('is_active', true);
     }
+
+    // Accessor untuk experience - ubah JSON ke array
+    public function getExperienceArrayAttribute()
+    {
+        if (empty($this->experience)) {
+            return [];
+        }
+
+        $data = json_decode($this->experience, true);
+        return is_array($data) ? $data : [];
+    }
+
+    // Accessor untuk education - ubah JSON ke array
+    public function getEducationArrayAttribute()
+    {
+        if (empty($this->education)) {
+            return [];
+        }
+
+        $data = json_decode($this->education, true);
+        return is_array($data) ? $data : [];
+    }
 }

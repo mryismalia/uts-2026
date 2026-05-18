@@ -1,10 +1,43 @@
 @extends('layouts.app')
 
-@section('title', 'About Me - Ahmad Fauzi')
+@section('title', 'About Me - Mery Ismalia')
 
 @section('content')
 @php
 $profile = \App\Models\Profile::active()->first();
+
+// Fungsi untuk memproses data experience
+function parseExperienceData($data) {
+    if (empty($data)) return [];
+
+    // Jika sudah berupa array
+    if (is_array($data)) return $data;
+
+    // Jika string JSON
+    $decoded = json_decode($data, true);
+    if (is_array($decoded)) return $decoded;
+
+    // Jika string HTML biasa
+    return [];
+}
+
+// Fungsi untuk memproses data education
+function parseEducationData($data) {
+    if (empty($data)) return [];
+
+    // Jika sudah berupa array
+    if (is_array($data)) return $data;
+
+    // Jika string JSON
+    $decoded = json_decode($data, true);
+    if (is_array($decoded)) return $decoded;
+
+    // Jika string HTML biasa
+    return [];
+}
+
+$experiences = parseExperienceData($profile->experience ?? '');
+$educations = parseEducationData($profile->education ?? '');
 @endphp
 
 <div class="max-w-7xl mx-auto px-4 py-12">
@@ -14,7 +47,7 @@ $profile = \App\Models\Profile::active()->first();
             <!-- Profile Image -->
             <div class="md:w-2/5 relative overflow-hidden">
                 @if($profile && $profile->profile_image)
-                <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="{{ $profile->full_name }}" class="w-full h-full object-cover min-h-[500px] hover:scale-110 transition-transform duration-500">
+                <img src="{{ asset('images/image.png') }}" alt="Profile">
                 @else
                 <div class="w-full h-full min-h-[500px] hero-gradient flex items-center justify-center">
                     <i class="fas fa-user-circle text-white text-9xl"></i>
@@ -25,11 +58,11 @@ $profile = \App\Models\Profile::active()->first();
             <!-- Profile Info -->
             <div class="md:w-3/5 p-8 lg:p-12">
                 <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Tentang Saya</span>
-                <h1 class="text-4xl font-bold text-gray-800 mt-2 mb-4">{{ $profile->full_name ?? 'Ahmad Fauzi' }}</h1>
+                <h1 class="text-4xl font-bold text-gray-800 mt-2 mb-4">{{ $profile->full_name ?? 'Mery Ismalia' }}</h1>
                 <p class="text-xl text-blue-600 mb-6">{{ $profile->title ?? 'Full Stack Developer' }}</p>
 
                 <div class="prose max-w-none text-gray-700 mb-8 leading-relaxed">
-                    {!! $profile->bio ?? '<p>Halo! Saya adalah seorang Full Stack Developer dengan passion dalam membangun aplikasi web yang inovatif dan user-friendly. Saya memiliki pengalaman dalam berbagai teknologi modern dan selalu bersemangat untuk mempelajari hal-hal baru.</p>' !!}
+                    {!! $profile->bio ?? '<p>Halo! Saya adalah seorang Full Stack Developer dengan passion dalam membangun aplikasi web yang inovatif dan user-friendly.</p>' !!}
                 </div>
 
                 <!-- Contact Info Cards -->
@@ -96,33 +129,75 @@ $profile = \App\Models\Profile::active()->first();
     </div>
 
     <!-- Experience Section -->
-    @if($profile && $profile->experience)
     <div class="mt-12" data-aos="fade-up" data-aos-delay="100">
         <div class="text-center mb-8">
             <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Perjalanan Karir</span>
             <h2 class="text-3xl font-bold text-gray-800 mt-2 section-title pb-4">Pengalaman Kerja</h2>
         </div>
-        <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12">
-            <div class="prose max-w-none">
-                {!! $profile->experience !!}
+
+        @if(count($experiences) > 0)
+            <div class="space-y-6">
+                @foreach($experiences as $exp)
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all">
+                    <div class="flex flex-wrap gap-4">
+                        <div class="w-14 h-14 hero-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-briefcase text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800">{{ $exp['position'] ?? '' }}</h3>
+                            <p class="text-blue-600 font-semibold">{{ $exp['company'] ?? '' }}</p>
+                            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1 mb-3">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>{{ $exp['period'] ?? '' }}</span>
+                            </div>
+                            <p class="text-gray-600 leading-relaxed">{{ $exp['description'] ?? '' }}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
-        </div>
+        @else
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                <i class="fas fa-briefcase text-5xl text-gray-300 mb-3"></i>
+                <p class="text-gray-500">Belum ada data pengalaman kerja</p>
+            </div>
+        @endif
     </div>
-    @endif
 
     <!-- Education Section -->
-    @if($profile && $profile->education)
     <div class="mt-12" data-aos="fade-up" data-aos-delay="200">
         <div class="text-center mb-8">
-            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Pendidikan</span>
+            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider"></span>
             <h2 class="text-3xl font-bold text-gray-800 mt-2 section-title pb-4">Latar Belakang Pendidikan</h2>
         </div>
-        <div class="bg-white rounded-3xl shadow-xl p-8 lg:p-12">
-            <div class="prose max-w-none">
-                {!! $profile->education !!}
+
+        @if(count($educations) > 0)
+            <div class="space-y-6">
+                @foreach($educations as $edu)
+                <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all">
+                    <div class="flex flex-wrap gap-4">
+                        <div class="w-14 h-14 hero-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-800">{{ $edu['degree'] ?? '' }}</h3>
+                            <p class="text-blue-600 font-semibold">{{ $edu['university'] ?? '' }}</p>
+                            <div class="flex items-center gap-2 text-sm text-gray-500 mt-1 mb-3">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>{{ $edu['year'] ?? '' }}</span>
+                            </div>
+                            <p class="text-gray-600 leading-relaxed">{{ $edu['description'] ?? '' }}</p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
-        </div>
+        @else
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                <i class="fas fa-graduation-cap text-5xl text-gray-300 mb-3"></i>
+                <p class="text-gray-500">Belum ada data pendidikan</p>
+            </div>
+        @endif
     </div>
-    @endif
 </div>
 @endsection

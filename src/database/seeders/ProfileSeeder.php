@@ -14,9 +14,9 @@ class ProfileSeeder extends Seeder
             'title' => 'Full Stack Developer',
             'short_bio' => 'Full Stack Developer dengan pengalaman 3+ tahun dalam pengembangan web',
             'bio' => 'Saya adalah seorang Full Stack Developer yang passionate dalam membangun aplikasi web modern, scalable, dan user-friendly. Berpengalaman dalam Laravel, Livewire, dan berbagai teknologi terkini.',
-            'email' => 'mery.ismalia@example.com',
-            'phone' => '+62 812 3456 7890',
-            'address' => 'Jakarta, Indonesia',
+            'email' => 'meryismalia@gmail.com',
+            'phone' => '+62 896 3720 7719',
+            'address' => 'Tangerang, Indonesia',
             'profile_image' => '/images/profile.jpg',
             'github_url' => 'https://github.com/meryismalia',
             'linkedin_url' => 'https://linkedin.com/in/meryismalia',
@@ -37,10 +37,10 @@ class ProfileSeeder extends Seeder
             ]',
             'education' => '[
                 {
-                    "degree": "S1 Teknik Informatika",
-                    "university": "Universitas Indonesia",
-                    "year": "2016 - 2020",
-                    "description": "IPK 3.8, fokus pada pengembangan web dan database"
+                    "degree": "Mahasiswa Teknik Informatika",
+                    "university": "Universitas Esa Unggul",
+                    "year": "2024 - Sekarang",
+                    "description": "fokus pada pengembangan web dan database"
                 }
             ]',
             'is_active' => true
