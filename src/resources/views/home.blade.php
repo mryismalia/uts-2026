@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home - Ahmad Fauzi | Full Stack Developer')
+@section('title', 'Home - Mery Ismalia | Junior Full Stack Developer')
 
 @section('content')
 @php
@@ -23,7 +23,7 @@ $featuredProjects = \App\Models\Project::where('is_featured', true)->take(3)->ge
                     Hi, I'm <span class="text-yellow-300">{{ $profile->full_name ?? 'Mery Ismalia' }}</span>
                 </h1>
 
-                <p class="text-xl md:text-2xl mb-4 opacity-95">{{ $profile->title ?? 'Full Stack Developer' }}</p>
+                <p class="text-xl md:text-2xl mb-4 opacity-95">{{ $profile->title ?? 'Junior Full Stack Developer' }}</p>
 
                 <p class="text-lg mb-8 opacity-90 max-w-lg mx-auto md:mx-0 leading-relaxed">
                     {{ $profile->short_bio ?? 'Membangun aplikasi web modern, responsif, dan scalable dengan teknologi terkini.' }}
@@ -72,7 +72,7 @@ $featuredProjects = \App\Models\Project::where('is_featured', true)->take(3)->ge
     <div class="max-w-7xl mx-auto px-4">
 
         <div class="text-center mb-12" data-aos="fade-up">
-            <span class="text-pink-500 font-semibold text-sm uppercase tracking-wider">Portofolio</span>
+            <span class="text-pink-500 font-semibold text-sm uppercase tracking-wider">Portofolio<br></span>
 
             <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 section-title pb-4">
                 Proyek Unggulan
@@ -93,7 +93,9 @@ $featuredProjects = \App\Models\Project::where('is_featured', true)->take(3)->ge
                 <div class="relative overflow-hidden">
 
                     @if($project->image_url)
-                        <img src="{{ asset('images/tampilan.jpg') }}" alt="Profile">
+                        <img src="{{ asset('storage/' . $project->image_url) }}"
+                             alt="{{ $project->title }}"
+                             class="w-full h-64 object-cover group-hover:scale-105 transition duration-500">
                     @else
                         <div class="w-full h-64 hero-gradient flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                             <i class="fas fa-laptop-code text-white text-6xl"></i>

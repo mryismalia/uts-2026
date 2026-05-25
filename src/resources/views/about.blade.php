@@ -59,17 +59,17 @@ $educations = parseEducationData($profile->education ?? '');
             <div class="md:w-3/5 p-8 lg:p-12">
                 <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Tentang Saya</span>
                 <h1 class="text-4xl font-bold text-gray-800 mt-2 mb-4">{{ $profile->full_name ?? 'Mery Ismalia' }}</h1>
-                <p class="text-xl text-blue-600 mb-6">{{ $profile->title ?? 'Full Stack Developer' }}</p>
+                <p class="text-xl text-blue-600 mb-6">{{ $profile->title ?? '' }}</p>
 
                 <div class="prose max-w-none text-gray-700 mb-8 leading-relaxed">
-                    {!! $profile->bio ?? '<p>Halo! Saya adalah seorang Full Stack Developer dengan passion dalam membangun aplikasi web yang inovatif dan user-friendly.</p>' !!}
+                    {!! $profile->bio ?? '<p></p>' !!}
                 </div>
 
                 <!-- Contact Info Cards -->
-                <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                <div class="grid grid-cols-1 gap-4 mb-8">
                     @if($profile && $profile->email)
                     <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                        <div class="w-10 h-10 hero-gradient rounded-full flex items-center justify-center">
+                        <div class="w-10 h-10 hero-gradient rounded-full overflow-hidden flex items-center justify-center">
                             <i class="fas fa-envelope text-white"></i>
                         </div>
                         <div>
@@ -81,7 +81,7 @@ $educations = parseEducationData($profile->education ?? '');
 
                     @if($profile && $profile->phone)
                     <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                        <div class="w-10 h-10 hero-gradient rounded-full flex items-center justify-center">
+                        <div class="w-10 h-10 hero-gradient rounded-full overflow-hidden flex items-center justify-center">
                             <i class="fas fa-phone text-white"></i>
                         </div>
                         <div>
@@ -93,7 +93,7 @@ $educations = parseEducationData($profile->education ?? '');
 
                     @if($profile && $profile->address)
                     <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                        <div class="w-10 h-10 hero-gradient rounded-full flex items-center justify-center">
+                        <div class="w-10 h-10 hero-gradient rounded-full overflow-hidden flex items-center justify-center">
                             <i class="fas fa-map-marker-alt text-white"></i>
                         </div>
                         <div>
@@ -112,16 +112,6 @@ $educations = parseEducationData($profile->education ?? '');
                         <i class="fab fa-github text-xl"></i>
                     </a>
                     @endif
-                    @if($profile->linkedin_url)
-                    <a href="{{ $profile->linkedin_url }}" target="_blank" class="bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all hover:scale-110">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                    @endif
-                    @if($profile->twitter_url)
-                    <a href="{{ $profile->twitter_url }}" target="_blank" class="bg-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-300 transition-all hover:scale-110">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    @endif
                 </div>
                 @endif
             </div>
@@ -131,8 +121,8 @@ $educations = parseEducationData($profile->education ?? '');
     <!-- Experience Section -->
     <div class="mt-12" data-aos="fade-up" data-aos-delay="100">
         <div class="text-center mb-8">
-            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Perjalanan Karir</span>
-            <h2 class="text-3xl font-bold text-gray-800 mt-2 section-title pb-4">Pengalaman Kerja</h2>
+            <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">perjalanan karir & pendidikan<br></span>
+            <h2 class="text-3xl font-bold text-gray-800 mt-2 section-title pb-4"><br>Pengalaman Kerja</h2>
         </div>
 
         @if(count($experiences) > 0)

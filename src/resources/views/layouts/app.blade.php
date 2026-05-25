@@ -176,7 +176,7 @@
                     <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent">
                         Portofolio.
                     </h3>
-                    <p class="text-gray-400">Full Stack Developer.</p>
+                    <p class="text-gray-400">Junior Full Stack Developer.</p>
                 </div>
 
                 <div>
@@ -202,14 +202,13 @@
                     <h4 class="font-semibold mb-4">Social</h4>
                     <div class="flex gap-3">
                         <a class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600"><i class="fab fa-github"></i></a>
-                        <a class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
 
             </div>
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
-                © 2024 Portfolio
+                © 2026 Portfolio Mery Ismalia. All rights reserved.
             </div>
         </div>
     </footer>

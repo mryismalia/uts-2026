@@ -14,6 +14,7 @@ class Project extends Model
         'slug',
         'description',
         'image_url',
+        'project_image',
         'tech_stack',
         'project_url',
         'github_url',
@@ -56,5 +57,11 @@ class Project extends Model
     public function getTechStackArrayAttribute()
     {
         return array_map('trim', explode(',', $this->tech_stack));
+    }
+
+    // Compatibility accessor: map `image_url` attribute to the existing `project_image` column
+    public function getImageUrlAttribute()
+    {
+        return $this->project_image;
     }
 }

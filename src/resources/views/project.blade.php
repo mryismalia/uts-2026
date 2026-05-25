@@ -10,7 +10,7 @@ $projects = \App\Models\Project::latest()->paginate(6);
 <div class="max-w-7xl mx-auto px-4 py-12">
 
     <div class="text-center mb-12" data-aos="fade-up">
-        <span class="text-pink-500 font-semibold text-sm uppercase tracking-wider">Portofolio</span>
+        <span class="text-pink-500 font-semibold text-sm uppercase tracking-wider">Portofolio<br></span>
         <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mt-2 section-title pb-4">Proyek Saya</h1>
         <p class="text-gray-600 max-w-2xl mx-auto mt-4">
             Berikut adalah beberapa proyek yang telah saya kerjakan
@@ -26,8 +26,8 @@ $projects = \App\Models\Project::latest()->paginate(6);
 
             <div class="relative overflow-hidden">
 
-                @if($project->image)
-                    <img src="{{ asset('storage/' . $project->image) }}"
+                @if($project->image_url)
+                    <img src="{{ asset('storage/' . $project->image_url) }}" // Pastikan path gambar benar dan file ada
                          class="w-full h-64 object-cover group-hover:scale-105 transition duration-500"
                          alt="{{ $project->title }}">
                 @else

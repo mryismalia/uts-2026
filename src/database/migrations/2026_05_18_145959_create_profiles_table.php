@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('profile_image')->nullable();
             $table->string('github_url')->nullable();
-            $table->string('linkedin_url')->nullable();
-            $table->string('twitter_url')->nullable();
             $table->text('experience')->nullable();
             $table->text('education')->nullable();
             $table->json('social_links')->nullable();

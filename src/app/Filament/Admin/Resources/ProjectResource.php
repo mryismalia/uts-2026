@@ -32,7 +32,7 @@ class ProjectResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\FileUpload::make('image_url')
+                Forms\Components\FileUpload::make('project_image')
                     ->image(),
                 Forms\Components\TextInput::make('tech_stack')
                     ->required()
@@ -64,7 +64,7 @@ class ProjectResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image_url'),
+                Tables\Columns\ImageColumn::make('project_image'),
                 Tables\Columns\TextColumn::make('tech_stack')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('project_url')

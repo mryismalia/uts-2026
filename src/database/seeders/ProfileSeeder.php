@@ -11,31 +11,24 @@ class ProfileSeeder extends Seeder
     {
         Profile::create([
             'full_name' => 'Mery Ismalia',
-            'title' => 'Full Stack Developer',
-            'short_bio' => 'Full Stack Developer dengan pengalaman 3+ tahun dalam pengembangan web',
-            'bio' => 'Saya adalah seorang Full Stack Developer yang passionate dalam membangun aplikasi web modern, scalable, dan user-friendly. Berpengalaman dalam Laravel, Livewire, dan berbagai teknologi terkini.',
+            'title' => 'Junior Full Stack Developer',
+            'short_bio' => 'Informatics Student (4th Sem) & Full Stack Developer. Created "Matcha Mey" POS & campus web apps. Skilled in UI & backend databases.',
+            'bio' => 'Saya adalah seorang Junior Full Stack Developer yang passionate dalam membangun aplikasi web modern, scalable, dan user-friendly. Berpengalaman dalam Laravel, Livewire, dan berbagai teknologi terkini.',
             'email' => 'meryismalia@gmail.com',
             'phone' => '+62 896 3720 7719',
             'address' => 'Tangerang, Indonesia',
             'profile_image' => '/images/profile.jpg',
             'github_url' => 'https://github.com/meryismalia',
-            'linkedin_url' => 'https://linkedin.com/in/meryismalia',
-            'twitter_url' => 'https://twitter.com/meryismalia',
             'experience' => '[
                 {
-                    "position": "Senior Full Stack Developer",
-                    "company": "Tech Solutions Indonesia",
-                    "period": "2022 - Sekarang",
-                    "description": "Mengembangkan aplikasi enterprise menggunakan Laravel dan Livewire"
-                },
-                {
-                    "position": "Web Developer",
-                    "company": "Digital Agency Creative",
-                    "period": "2020 - 2022",
-                    "description": "Membangun berbagai website untuk client dari berbagai industri"
+                    "position": "Sistem Analis & Tester",
+                    "project": "Sistem Peminjaman Fasilitas Kampus",
+                    "period": "2026 - Sekarang",
+                    "description": "Menangani analisis kebutuhan, pengujian, dan dokumentasi untuk sistem peminjaman fasilitas kampus yang digunakan oleh mahasiswa dan staf."
                 }
+
             ]',
-            'education' => '[
+                'education' => '[
                 {
                     "degree": "Mahasiswa Teknik Informatika",
                     "university": "Universitas Esa Unggul",

@@ -19,6 +19,12 @@ class ProfileResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Portofolio';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static ?string $recordTitleAttribute = 'full_name';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -49,12 +55,6 @@ class ProfileResource extends Resource
                 Forms\Components\TextInput::make('github_url')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('linkedin_url')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('twitter_url')
-                    ->maxLength(255)
-                    ->default(null),
                 Forms\Components\Textarea::make('experience')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('education')
@@ -82,10 +82,6 @@ class ProfileResource extends Resource
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('profile_image'),
                 Tables\Columns\TextColumn::make('github_url')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('linkedin_url')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('twitter_url')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),

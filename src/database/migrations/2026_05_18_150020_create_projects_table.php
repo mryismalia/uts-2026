@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description');
-            $table->string('image_url')->nullable();
+            $table->string('project_image')->nullable();
             $table->string('tech_stack');
             $table->string('project_url')->nullable();
             $table->string('github_url')->nullable();

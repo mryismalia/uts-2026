@@ -9,7 +9,7 @@ $profile = \App\Models\Profile::active()->first();
 
 <div class="max-w-7xl mx-auto px-4 py-12">
     <div class="text-center mb-12" data-aos="fade-up">
-        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Hubungi Saya</span>
+        <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Hubungi Saya<br></span>
         <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mt-2 section-title pb-4">Mari Bekerja Sama</h1>
         <p class="text-gray-600 max-w-2xl mx-auto mt-4">Ada pertanyaan atau ingin berdiskusi? Jangan ragu untuk menghubungi saya</p>
     </div>
@@ -69,16 +69,6 @@ $profile = \App\Models\Profile::active()->first();
                         @if($profile->github_url)
                         <a href="{{ $profile->github_url }}" target="_blank" class="bg-gray-800 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-gray-700 transition-all hover:scale-110">
                             <i class="fab fa-github text-xl"></i>
-                        </a>
-                        @endif
-                        @if($profile->linkedin_url)
-                        <a href="{{ $profile->linkedin_url }}" target="_blank" class="bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-600 transition-all hover:scale-110">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        @endif
-                        @if($profile->twitter_url)
-                        <a href="{{ $profile->twitter_url }}" target="_blank" class="bg-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-blue-300 transition-all hover:scale-110">
-                            <i class="fab fa-twitter text-xl"></i>
                         </a>
                         @endif
                     </div>
